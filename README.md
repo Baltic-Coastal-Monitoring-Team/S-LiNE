@@ -4,8 +4,6 @@
 
 # S-LiNE Toolbox
 
-### S-LiNE – An open-source LiDAR toolbox for dune coasts shoreline mapping. 
-
 **S-LiNE** is an open-source toolbox for detecting shoreline positions from UAV and ALS LiDAR point clouds.
 It combines automated and semi-automated workflows based on elevation, intensity, RGB, scan angle characteristics, and point cloud classification.
 
@@ -18,11 +16,77 @@ It combines automated and semi-automated workflows based on elevation, intensity
 - Export results to GeoJSON / Shapefile formats
 - Integrated download and installation of demo datasets.
 
+
+## Folder Structure
+"""
+📁 S-LiNE
+┣ 📁 tools
+┃ ┣ step0_demo-data.py
+┃ ┣ step1_data_preparation.py
+┃ ┣ step2_shoreline_detection.py
+┃ ┣ step3_stats.py
+┃ ┣ step4_animation.py
+┃ ┣ step5_scanline_detection.py
+┃ ┗ step6_rgb_shoreline.py
+┣ 📁 input
+┃ ┣ 📁 las #raw las files from UAV LiDAR 
+┃ ┣ 📁 las_geoid #las files from step 1 to further preprocessing in steps 2-5, and 6
+┃ ┣ 📁 las_class #raw las files ALS LiDAR
+┃ ┗ 📁 geoid #CSV files with GEOID value
+┣ 📁 output
+┃ ┣ 📁 sce
+┃ ┗ 📁 png
+┗ app.py
+"""
+
+## Requirements
+The application requires Python 3.9+ and the following packages:
+- streamlit
+- pandas
+- numpy
+- laspy
+- scipy
+- geopandas
+- matplotlib
+- scikit-image
+- networkx
+- shapely
+- geojson
+- fiona
+- Pillow
+- requests
+- streamlit-sortables
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Baltic-Coastal-Monitoring-Team/S-LiNE.git
+cd S-LiNE
+```
+
+2. Create and activate the environment:
+```bash
+conda env create -f environment.yml
+conda activate s-line
+```
+If you already have an environment named s-line, you may need to remove it first:
+```bash
+conda env remove -n s-line
+```
+
+3. Run the application:
+
+Navigate to the project folder and run: `streamlit run app.py` \n
+The app will launch in your browser at `http://localhost:8501`.
+
+
 ## Demo Data
 Demo datasets available:
-- UAV LiDAR Demo
-- ALS LiDAR Demo
-More info: [S-LiNE GitHub Repository](https://github.com/Baltic-Coastal-Monitoring-Team/S-LiNE)
+- [UAV LiDAR Demo](https://zenodo.org/records/15288281)
+- [ALS LiDAR Demo](https://zenodo.org/records/15288488) 
+
 
 ## Demo Data Processing Guide
 
@@ -132,26 +196,6 @@ Demo files require a different approach to help you understand how the applicati
 <img src="https://c5studio.pl/s-line/step_6.png" alt="Step6 - ALS" width="300">
 
 ---
-
-## Folder Structure
-📁 S-LiNE
-┣ 📁 tools
-┃ ┣ step0_demo-data.py
-┃ ┣ step1_data_preparation.py
-┃ ┣ step2_shoreline_detection.py
-┃ ┣ step3_stats.py
-┃ ┣ step4_animation.py
-┃ ┣ step5_scanline_detection.py
-┃ ┗ step6_rgb_shoreline.py
-┣ 📁 input
-┃ ┣ 📁 las #raw las files from UAV LiDAR 
-┃ ┣ 📁 las_geoid #las files from step 1 to further preprocessing in steps 2-5, and 6
-┃ ┣ 📁 las_class #raw las files ALS LiDAR
-┃ ┗ 📁 geoid #CSV files with GEOID value
-┣ 📁 output
-┃ ┣ 📁 sce
-┃ ┗ 📁 png
-┗ app.py
 
 ## Project Status
 This application is under active development. 

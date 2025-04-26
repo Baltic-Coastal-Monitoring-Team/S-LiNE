@@ -18,7 +18,7 @@ It combines automated and semi-automated workflows based on elevation, intensity
 
 
 ## Folder Structure
-"""
+```bash
 📁 S-LiNE
 ┣ 📁 tools
 ┃ ┣ step0_demo-data.py
@@ -37,10 +37,11 @@ It combines automated and semi-automated workflows based on elevation, intensity
 ┃ ┣ 📁 sce
 ┃ ┗ 📁 png
 ┗ app.py
-"""
+```
 
 ## Requirements
 The application requires Python 3.9+ and the following packages:
+```bash
 - streamlit
 - pandas
 - numpy
@@ -56,6 +57,7 @@ The application requires Python 3.9+ and the following packages:
 - Pillow
 - requests
 - streamlit-sortables
+```
 
 ## Installation
 

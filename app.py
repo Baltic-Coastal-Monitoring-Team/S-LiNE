@@ -18,7 +18,15 @@ st.set_page_config(
 from tools import homepage, step1_data_preparation, step2_shoreline_detection, step3_stats, step4_animation, step5_scanline_detection, step6_rgb_shoreline, step0_demo_data
 
 # === Sidebar ===
-st.sidebar.title("S-LiNE")
+with st.sidebar:
+    st.markdown(
+        """
+        <div style="text-align: left; padding-bottom: 40px;">
+            <img src="https://c5studio.pl/s-line/logo.png" width="150">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 step = st.sidebar.radio("Select page", [
     "0. Homepage",
     "1. Data preparation",

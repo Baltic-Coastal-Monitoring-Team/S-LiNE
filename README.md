@@ -102,9 +102,15 @@ Demo files require a different approach to help you understand how the applicati
 - If using demo data from UAV, **first** perform geoid correction (via **Step 1 – Data Preparation**).
 
 #### Geoid correction
-- **Important**: To use demo data first [downlaod](https://c5studio.pl/s-line/geoid_model_2180.csv) a geoid model for Poland (EPSG:2180) in CSV file (42 MB) and place it in `input/geoid` folder.
+
+- **Important**: To properly use the demo data, you also need to download the example geoid model.
+- In the application, go to the **"Demo Data"** tab and click **"Download Geoid Model"**.
+- The CSV file (42 MB) will be automatically saved into the `input/geoid` folder.
+- The provided model corresponds to the EPSG:2180 coordinate system (national geoid model for Poland).
+Note: If you want to use your own geoid model, you can place any compatible CSV file manually in the `input/geoid` directory.
+
+**Geoid model usage**
 - Select an individual LAS file and the corresponding geoid file.
-- If you want to use another geoid model, place the CSV file in the `input/geoid` folder.
 - **Important:** The LAS and geoid files must have the same coordinate system. Reprojection is not handled automatically.
 - You can batch-process multiple LAS files if needed.
 

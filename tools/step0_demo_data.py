@@ -103,3 +103,30 @@ def run():
         
         st.success("ALS demo dataset downloaded and extracted successfully!")
 
+
+    st.divider()
+
+    st.subheader("Demo 3: Geoid Model (Poland)")
+
+    st.markdown("""
+    Example geoid model for height correction.
+
+    - Based on the national geoid model for Poland (EPSG:2180).
+    - Provided for testing geoid correction module.
+    - Should be placed into the `input/geoid` folder.
+
+    Data source: Baltic Coastal Monitoring Team – S-LiNE Toolbox.
+    """)
+
+    if st.button("Download Geoid Model"):
+        url_geoid = "](https://c5studio.pl/s-line/geoid_model_2180.csv"
+        target_dir = "input/geoid"
+        os.makedirs(target_dir, exist_ok=True)
+
+        # Download
+        response = requests.get(url_geoid)
+        with open(os.path.join(target_dir, "geoid_poland.csv"), "wb") as f:
+            f.write(response.content)
+
+        st.success("Geoid model downloaded successfully into input/geoid!")
+

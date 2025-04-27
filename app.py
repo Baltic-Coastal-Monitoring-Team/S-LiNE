@@ -10,7 +10,7 @@ st.set_page_config(
             "**S-LiNE** is an open-source toolbox for detecting shoreline positions from LiDAR point clouds.\n"
             "It combines automated and manual methods based on elevation, intensity, scan angle characteristics and point cloud classification.\n" 
             "The interface supports visual preview and batch processing, making S-LiNE a fast and reproducible solution for analyzing dynamic dune coasts.\n\n"
-            "**Authors:** Śledziowski Jakub, Terefenko Paweł, Giza Andrzej / University of Szczecin - Baltic Coastal Monitoring Team"
+            "**Authors:** Śledziowski Jakub, Terefenko Paweł, Giza Andrzej / University of Szczecin / Baltic Coastal Monitoring Team"
         )
     }
 )

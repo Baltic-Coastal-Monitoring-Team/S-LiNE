@@ -114,7 +114,7 @@ Note: If you want to use your own geoid model, you can place any compatible CSV 
 - **Important:** The LAS and geoid files must have the same coordinate system. Reprojection is not handled automatically.
 - You can batch-process multiple LAS files if needed.
 
-<img src="https://c5studio.pl/s-line/step_1.png" alt="Step1 - Data Preparation" width="500">
+<img src="https://c5studio.pl/s-line/step_1.png" alt="Step1 - Data Preparation" width="600">
 
 ---
 
@@ -141,7 +141,7 @@ Note: If you want to use your own geoid model, you can place any compatible CSV 
 - **Uncheck** "Auto threshold for intensity (Otsu)".
 - Click **Run detection**.
 
-<img src="https://c5studio.pl/s-line/step_2a.png" alt="Step1 - 2023-12-16" width="500">
+<img src="https://c5studio.pl/s-line/step_2a.png" alt="Step1 - 2023-12-16" width="600">
 
 **File: `2024-01-29_geoid.las`**
 - In **Intensity preview**, default settings will show poor contrast.
@@ -150,14 +150,14 @@ Note: If you want to use your own geoid model, you can place any compatible CSV 
 - In **Detection tab**, check if suggested parameters are selected and set **Intensity comparison** to `<` and click **Run detection** again.
 - Now the shoreline line should be correctly detected.
 
-<img src="https://c5studio.pl/s-line/step_2b.png" alt="Step2 - 2024-01-29" width="500">
+<img src="https://c5studio.pl/s-line/step_2b.png" alt="Step2 - 2024-01-29" width="600">
 
 
 **File: `2024-03-27_geoid.las`**
 - Adjust **Max intensity to 80** in the **Intensity preview**.
 - In the **Detection tab**, use the suggested auto parameters but switch **Intensity comparison** to `<`.
 
-<img src="https://c5studio.pl/s-line/step_2c.png" alt="Step2 - 2024-03-27" width="500">
+<img src="https://c5studio.pl/s-line/step_2c.png" alt="Step2 - 2024-03-27" width="600">
 
 ---
 
@@ -186,7 +186,7 @@ Note: If you want to use your own geoid model, you can place any compatible CSV 
 | `2024-01-29_geoid.las` | Beach (sandy) | Adjust minimum height to 0,64 and max. heigt to 2,40 |
 | `2024-03-27_geoid.las` | None | Manually adjust RGB ranges (min: 51000, max: 65535), set smoothing ~5 |
 
-<img src="https://c5studio.pl/s-line/step_3.png" alt="Step3 - 2023-12-16" width="500">
+<img src="https://c5studio.pl/s-line/step3.png" alt="Step3 - 2023-12-16" width="600">
 
 ---
 
@@ -199,7 +199,7 @@ Note: If you want to use your own geoid model, you can place any compatible CSV 
   - Distance plot and quick shoreline overlay.
   - Shoreline overlay on DEM (you can adjust DEM resolution).
 
-<img src="https://c5studio.pl/s-line/step_4.png" alt="Step4 - statistics" width="500">
+<img src="https://c5studio.pl/s-line/stats.png" alt="Step4 - statistics" width="600">
 
 #### Algorithm details
 - Shoreline Change Envelope (SCE) method based on transect sampling.
@@ -219,7 +219,7 @@ Note: If you want to use your own geoid model, you can place any compatible CSV 
   - Line thickness.
 - The animation will be saved automatically into the `output` folder.
 
-<img src="https://c5studio.pl/s-line/step_5.png" alt="Step5 - Animation" width="500">
+<img src="https://c5studio.pl/s-line/step_5.png" alt="Step5 - Animation" width="600">
 
 ---
 
@@ -231,7 +231,7 @@ Note: If you want to use your own geoid model, you can place any compatible CSV 
 - The result will be saved as a `.geojson` file in the `output` folder.
 - Optionally, check the **Export to SHP** box to also generate a shapefile.
 
-<img src="https://c5studio.pl/s-line/step_6.png" alt="Step6 - ALS" width="500">
+<img src="https://c5studio.pl/s-line/step_6.png" alt="Step6 - ALS" width="600">
 
 #### Algorithm details
 - LAS files classified according to ASPRS codes: ground (class 2), water (class 9).

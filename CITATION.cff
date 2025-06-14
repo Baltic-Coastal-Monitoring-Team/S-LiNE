@@ -11,6 +11,6 @@ authors:
   given-names: "Andrzej"
   orcid: "https://orcid.org/0000-0002-5459-9261"  
 title: "S-LiNE: An open-source LiDAR toolbox for dune coasts shoreline mapping"
-version: 1.0.1
+version: 1.0.2
 date-released: 2025-06-14
 url: "https://github.com/Baltic-Coastal-Monitoring-Team/S-LiNE"

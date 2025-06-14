@@ -1,6 +1,5 @@
 cff-version: 1.0.1
 message: "If you use S-LiNE in your work, please cite the following:"
-title: "S-LiNE: An open-source LiDAR toolbox for dune coasts shoreline mapping"
 authors:
   - family-names: Śledziowski
     given-names: Jakub
@@ -8,7 +7,6 @@ authors:
     given-names: Paweł
   - family-names: Giza
     given-names: Andrzej
+title: "S-LiNE: An open-source LiDAR toolbox for dune coasts shoreline mapping"
 version: "1.0.1"
 date-released: "2025-06-14"
-repository-code: "https://github.com/Baltic-Coastal-Monitoring-Team/S-LiNE"
-license: "MIT"

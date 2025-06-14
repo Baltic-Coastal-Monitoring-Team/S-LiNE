@@ -1,16 +1,17 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 authors:
-- family-names: "Sledziowski"
+- family-names: "Śledziowski"
   given-names: "Jakub"
   orcid: "https://orcid.org/0000-0001-9359-7907"
 - family-names: "Terefenko"
-  given-names: "Pawel"
+  given-names: "Paweł"
   orcid: "https://orcid.org/0000-0002-5081-8615"
 - family-names: "Giza"
   given-names: "Andrzej"
   orcid: "https://orcid.org/0000-0002-5459-9261"  
 title: "S-LiNE: An open-source LiDAR toolbox for dune coasts shoreline mapping"
 version: 1.0.2
+doi: 10.5281/zenodo.15665018
 date-released: 2025-06-14
 url: "https://github.com/Baltic-Coastal-Monitoring-Team/S-LiNE"

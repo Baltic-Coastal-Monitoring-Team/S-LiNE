@@ -1,0 +1,9 @@
+cff-version: 1.0.0
+message: "If you use S-LiNE in your work, please cite the following:"
+title: "S-LiNE: An open-source LiDAR toolbox for dune coasts shoreline mapping. "
+authors: Jakub Śledziowski, Paweł Terefenko, Andrzej Giza
+version: "1.0.0"
+date-released: "2025-06-14"
+repository-code: "https://github.com/Baltic-Coastal-Monitoring-Team/S-LiNE"
+doi: "soon"
+license: "MIT"

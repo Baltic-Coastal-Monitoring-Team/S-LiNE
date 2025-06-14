@@ -120,6 +120,19 @@ Note: If you want to use your own geoid model, you can place any compatible CSV 
 
 ### 2. UAV – Shoreline Detection (Intensity)
 
+#### Algorithm details
+- Height filtering applied to limit points near shoreline level (default Z ≤ 2.0 m).
+- Intensity histogram calculated on filtered subset.
+- Otsu's method computes automatic threshold by minimizing intra-class variance.
+- Local minimum near Otsu ±10 bins determines suggested threshold.
+- User can manually override threshold and comparison operator (> or <).
+- Filtered points are binned spatially; Canny edge detection applied on point count grid.
+- KDTree-based neighbor filtering removes unstable edge points.
+- Scan angle filtering (default 15°) removes high-angle returns.
+
+
+**Suggested settings for demo files:**
+
 **File: `2023-12-16_geoid.las`**
 - Go to **Intensity preview** tab.
 - Use **default settings** and click **Generate intensity preview**.
@@ -154,7 +167,18 @@ Note: If you want to use your own geoid model, you can place any compatible CSV 
 - Adjust **minimum and maximum height filters** individually for each file.
 - Fine-tune **smoothing** for the best visual results.
 
+#### Algorithm details
+
+- Height filtering applied using user-specified Z min and Z max.
+- Manual threshold ranges for Red, Green, and Blue channels define color filtering mask.
+- Presets (Beach (sandy)) are optimized for typical dry sand / wet sand contrast for Baltic Sea.
+- Filtered points are grouped into bins along X axis.
+- In each bin, either the highest (upper) or lowest (lower) Y-coordinate is selected.
+- Gaussian smoothing is applied to stabilize shoreline geometry.
+- No automatic clustering or histogram-based thresholding is applied — user fully controls thresholds interactively.
+
 **Suggested settings for demo files:**
+
 
 | File | Preset | Notes |
 |:---|:---|:---|
@@ -162,9 +186,7 @@ Note: If you want to use your own geoid model, you can place any compatible CSV 
 | `2024-01-29_geoid.las` | Beach (sandy) | Adjust minimum height to 0,64 and max. heigt to 2,40 |
 | `2024-03-27_geoid.las` | None | Manually adjust RGB ranges (min: 51000, max: 65535), set smoothing ~5 |
 
-<img src="https://c5studio.pl/s-line/step_3a.png" alt="Step3 - 2023-12-16" width="500">
-<img src="https://c5studio.pl/s-line/step_3b.png" alt="Step3 - 2024-01-29" width="500">
-<img src="https://c5studio.pl/s-line/step_3c.png" alt="Step3 - 2024-03-27" width="500">
+<img src="https://c5studio.pl/s-line/step_3.png" alt="Step3 - 2023-12-16" width="500">
 
 ---
 
@@ -178,6 +200,13 @@ Note: If you want to use your own geoid model, you can place any compatible CSV 
   - Shoreline overlay on DEM (you can adjust DEM resolution).
 
 <img src="https://c5studio.pl/s-line/step_4.png" alt="Step4 - statistics" width="500">
+
+#### Algorithm details
+- Shoreline Change Envelope (SCE) method based on transect sampling.
+- Virtual transects are generated perpendicular to the reference shoreline.
+- Distances to comparison shoreline are calculated along each transect.
+- Output includes profile-by-profile distance table, average, maximum, and summary statistics.
+- Results are visualized both as plots and overlayed shoreline maps.
 
 ---
 
@@ -204,7 +233,18 @@ Note: If you want to use your own geoid model, you can place any compatible CSV 
 
 <img src="https://c5studio.pl/s-line/step_6.png" alt="Step6 - ALS" width="500">
 
+#### Algorithm details
+- LAS files classified according to ASPRS codes: ground (class 2), water (class 9).
+- Ground-class points are divided into spatial bins (X or Y axis depending on orientation).
+- In each bin, extreme point is selected (upper, lower).
+- Automatic binning direction selected based on centroid displacement of ground and water points.
+- Gaussian smoothing is applied to stabilize shoreline polyline.
+- No additional intensity, RGB, or elevation filters are used.
+
 ---
+
+## Limitation
+The shoreline positions extracted by S-LiNE are dependent on the instantaneous water level at the time of LiDAR data acquisition. Tidal stage, storm surge, wind setup, and hydrodynamic fluctuations can temporarily shift the observed shoreline position. This effect is typically limited in microtidal environments such as the Baltic Sea (the primary study region), but may be significant in other coastal systems. The software does not include automated tidal normalization or hydrodynamic corrections. Users working in highly tidal regions should apply external water level corrections if required.
 
 ## Project Status
 This application is under active development. 
@@ -217,7 +257,7 @@ Upcoming features may include:
 Jakub Śledziowski, Paweł Terefenko, Andrzej Giza from University of Szczecin / Baltic Coastal Monitoring Team
 
 ## Citation
-> Coming soon.
+See CITATION.cff file.
 
 ## License
 MIT License

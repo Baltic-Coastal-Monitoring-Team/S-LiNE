@@ -108,8 +108,8 @@ def run():
         )
 
         fig, ax = plt.subplots(figsize=(10, 6))
-        ax.scatter(x[::50], y[::50], c='lightgray', s=1, label='All points')
-        ax.scatter(x[mask][::10], y[mask][::10], c='deepskyblue', s=2, label='Filtered points')
+        ax.scatter(x[::50], y[::50], c='lightgray', s=20, marker='s', label='All points')
+        ax.scatter(x[mask][::10], y[mask][::10], c='wheat', s=20, marker='s', label='Filtered points')
         ax.legend()
         ax.set_title("Preview of RGB-Z filter")
         st.pyplot(fig)
@@ -164,8 +164,8 @@ def run():
         line = detect_edge_line(points[::2], resolution=resolution, mode=edge_mode, smoothing=smoothing)
 
         fig, ax = plt.subplots(figsize=(10, 6))
-        ax.scatter(x[::50], y[::50], c='lightgray', s=1, label='All points')
-        ax.scatter(points[::10, 0], points[::10, 1], c='deepskyblue', s=2, label='Filtered (water)')
+        ax.scatter(x[::50], y[::50], c='lightgray', s=20, marker='s', label='All points')
+        ax.scatter(points[::10, 0], points[::10, 1], c='wheat', s=20, marker='s', label='Filtered')
         ax.plot(*line.xy, 'r-', linewidth=2, label='Detected shoreline')
         ax.legend()
         ax.set_title("Shoreline detected from RGB")

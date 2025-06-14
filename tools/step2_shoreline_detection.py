@@ -85,7 +85,7 @@ def preview_intensity(las_path, z_threshold_value, cell_size, min_val, max_val):
         x_filtered, y_filtered, binary_mask_custom.astype(int), statistic='mean', bins=[nxb, nyb]
     )
     ax3b.imshow(binned_custom.T, extent=extent, origin='lower', cmap='coolwarm', vmin=0, vmax=1)
-    ax3b.set_title("Suggested-thresholded regions (green = above, blue = below)")
+    ax3b.set_title("Suggested-thresholded regions (red = above, blue = below)")
     ax3b.set_xlabel("X [m]")
     ax3b.set_ylabel("Y [m]")
     st.pyplot(fig3b)

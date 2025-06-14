@@ -131,6 +131,20 @@ Note: If you want to use your own geoid model, you can place any compatible CSV 
 - Scan angle filtering (default 15°) removes high-angle returns.
 
 
+**Parameter reference**
+| Parameter                               | Default    | Description                                                                                                          |
+| --------------------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------- |
+| **Z max threshold for preview**         | 2.0        | Maximum elevation (Z) to filter points used for intensity histogram preview. Used to exclude higher inland points.   |
+| **Grid cell size**                      | 0.50       | Spatial resolution (in meters) used for gridding point density and intensity maps.                                   |
+| **Min intensity / Max intensity**       | 0 / 255    | Optional range filter for intensity values shown in preview histogram. It is recommended to reduce the Max intensity if good results are not achieved. In the demo files, the maximum value was set to 80.                                                |
+| **Dynamic Z Level**                     | 0,65 (auto)   | Elevation threshold used for shoreline point extraction; if 0, estimated from high-intensity elevation distribution. If the height is known from ground measurements (e.g., from GNSS RTK), this parameter should be entered. The default value is 0.65, but it should be adjusted for each measurement. |
+| **Scan angle threshold (deg)**          | 15         | Minimum absolute scan angle required to include points; filters out near-nadir and extremely oblique returns.        |
+| **Max return number**                   | 1          | Filters multiple returns; only keeps first returns for more reliable shoreline mapping.                              |
+| **Auto threshold for intensity (Otsu)** | Enabled    | Enables automatic thresholding using Otsu's method on intensity values.                                              |
+| **Manual intensity threshold**          | 85         | Used when Otsu is disabled; user sets absolute threshold value.                                                      |
+| **Intensity comparison operator**       | `>`        | Determines whether shoreline is extracted from points above or below the threshold (`>` or `<`).                     |
+
+
 **Suggested settings for demo files:**
 
 **File: `2023-12-16_geoid.las`**
@@ -167,15 +181,30 @@ Note: If you want to use your own geoid model, you can place any compatible CSV 
 - Adjust **minimum and maximum height filters** individually for each file.
 - Fine-tune **smoothing** for the best visual results.
 
+First click Preview filter button and check your histograms. 
+Next set min to value that is visible on the beginning of all histograms, and max to value that is visible on the end of all histograms.  
+
 #### Algorithm details
 
 - Height filtering applied using user-specified Z min and Z max.
 - Manual threshold ranges for Red, Green, and Blue channels define color filtering mask.
-- Presets (Beach (sandy)) are optimized for typical dry sand / wet sand contrast for Baltic Sea.
+- Presets (Beach (sandy)) are optimized for typical dry sand / wet sand contrast for Baltic Sea, where all colors are set to default values (min. 30000 and max. 65535).
 - Filtered points are grouped into bins along X axis.
 - In each bin, either the highest (upper) or lowest (lower) Y-coordinate is selected.
 - Gaussian smoothing is applied to stabilize shoreline geometry.
 - No automatic clustering or histogram-based thresholding is applied — user fully controls thresholds interactively.
+
+
+| Parameter                 | Default | Description                                                                                  |
+| ------------------------- | ------- | -------------------------------------------------------------------------------------------- |
+| **Edge mode**             | `upper` | Selects which point in each bin is taken as shoreline candidate (uppermost, lowermost).      |
+| **Red min / max**         | -       | User-defined min and max thresholds for Red channel (from 0 to 65535).                       |
+| **Green min / max**       | -       | User-defined min and max thresholds for Green channel. (from 0 to 65535).                                       |
+| **Blue min / max**        | -       | User-defined min and max thresholds for Blue channel. (from 0 to 65535).                                        |
+| **Z min / max**           | 0 / 1.0       | Elevation filtering window to exclude irrelevant inland or water points.                     |
+| **Resolution (bin size)** | 1.0     | Bin size for edge detection grid.                                                            |
+| **Smoothing (sigma)**     | 2.0     | Gaussian smoothing applied to stabilize shoreline polyline. Higher numbers create more smooth line, but results could be less accurate                                  |
+
 
 **Suggested settings for demo files:**
 
@@ -214,9 +243,9 @@ Note: If you want to use your own geoid model, you can place any compatible CSV 
 
 - Select the sequence of shorelines to animate.
 - Adjust:
-  - DPI resolution,
-  - Frame interval (speed),
-  - Line thickness.
+  - DPI resolution (A higher value will create a target file with high resolution and size),
+  - Frame interval (Speed in seconds - default is 1 second),
+  - Line thickness (This parameter affects the final visualization of the lines and depends on the area of investigation and the line density).
 - The animation will be saved automatically into the `output` folder.
 
 <img src="https://c5studio.pl/s-line/step_5.png" alt="Step5 - Animation" width="600">
@@ -241,6 +270,12 @@ Note: If you want to use your own geoid model, you can place any compatible CSV 
 - Gaussian smoothing is applied to stabilize shoreline polyline.
 - No additional intensity, RGB, or elevation filters are used.
 
+| Parameter             | Default  | Description                                                                                                   |
+| --------------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
+| **Edge mode**         | `auto`   | Determines which direction to bin (upper, lower, left, right) based on ground vs water centroid displacement. |
+| **Smoothing (sigma)** | 2.0      | Gaussian smoothing applied to extracted shoreline. Higher numbers create more smooth line, but results could be less accurate                                                            |
+| **Export to SHP**     | Disabled | If enabled, result saved both as GeoJSON and SHP.                                                             |
+
 ---
 
 ## Limitation
@@ -249,6 +284,11 @@ The shoreline positions extracted by S-LiNE are dependent on the instantaneous w
 ## Project Status
 This application is under active development. 
 Upcoming features may include: 
+- LAZ file support (ALS)
+- Quickly preview of data with WMS background map  
+- LAS/LAZ inspector
+- Flight Coverage Map
+- All GeoJSON Layers Viewer
 - Detection of the base and crest of a sand dune on a sandy coast; 
 - Detection of the coastline and the crest and base of a cliff on a cliff coast. 
 - Additional data visualisations to support decision-making processes.

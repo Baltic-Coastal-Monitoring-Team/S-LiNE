@@ -257,7 +257,7 @@ Upcoming features may include:
 Jakub Śledziowski, Paweł Terefenko, Andrzej Giza from University of Szczecin / Baltic Coastal Monitoring Team
 
 ## Citation
-See CITATION.cff file.
+[![DOI](https://zenodo.org/badge/973397418.svg)](https://doi.org/10.5281/zenodo.15665018)
 
 ## License
 MIT License
